@@ -1,0 +1,34 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_project_web
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - my_project_network
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    container_name: my_project_db
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_project_db
+      MYSQL_USER: my_project_user
+      MYSQL_PASSWORD: my_project_password
+    ports:
+      - "3306:3306"
+    networks:
+      - my_project_network
+networks:
+  my_project_network:
+volumes:
+  dbdata:
