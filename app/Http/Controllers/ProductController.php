@@ -59,4 +59,12 @@ class ProductController extends Controller
         
         return view('home.products');
     }
+
+    /**
+     * Basic hello endpoint
+     */
+    public function getHello()
+    {
+        return response('Hello');
+    }
 }
