@@ -75,9 +75,14 @@ class ProductController extends Controller
     // Hàm sai convention (tên hàm không đúng camelCase)
     public function Get_Hello_Wrong()
     {
-        for($i = 0; $i < 10; $i++) {
-            // Do something
+                $test_sai = 111;
+        for($i = 0; $i < 10; $i++) { 
+            if ($i = 5) {
+                return view('home.products');
+            }
         }
+
+
         return 'Sai convention!';
     }
 }
