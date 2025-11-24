@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 // Route hello
 Route::get('/hello', [App\Http\Controllers\ProductController::class, 'getHello']);
+
+Route::get('/get_hello_wrong', [App\Http\Controllers\ProductController::class, 'Get_Hello_Wrong']);

@@ -20,8 +20,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->productRepo->getAll();
+        $count = is_countable($products) ? count($products) : 0;
 
-        return view('home.products', ['products' => $products]);
+        return view('home.products', [
+            'products' => $products,
+            'count' => $count
+        ]);
     }
 
     public function show($id)
@@ -66,5 +70,14 @@ class ProductController extends Controller
     public function getHello()
     {
         return response('Hello');
+    }
+
+    // Hàm sai convention (tên hàm không đúng camelCase)
+    public function Get_Hello_Wrong()
+    {
+        for($i = 0; $i < 10; $i++) {
+            // Do something
+        }
+        return 'Sai convention!';
     }
 }
