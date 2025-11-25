@@ -59,4 +59,11 @@ class ProductController extends Controller
         
         return view('home.products');
     }
+
+    public function testReview($id)
+    {
+        $this->productRepo->delete($id);
+        
+        return view('home.products');
+    }
 }
